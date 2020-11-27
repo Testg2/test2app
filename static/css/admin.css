@@ -1,0 +1,12 @@
+#header, caption {
+    color:white !important;
+    background:#29a7a5 !important;
+}
+
+.breadcrumbs, h2, [type="submit"] {
+    background:#07bdbde1 !important;
+    color:white !important;
+}
+#branding h1, #branding h1 a:link, #branding h1 a:visited {
+    color: white !important;
+}

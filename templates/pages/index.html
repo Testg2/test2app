@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <!-- Main Section -->
+    <div class="container">
+      <h3 class="heading font-weight-light">Here are your contacts</h3>
+      <hr>
+    </div>
+    <div class="container main-part">
+      <!-- Card for details -->
+      {% if contacts %}
+
+          {% for contact in contacts %}
+
+              <div class="card my-2 mx-2 boy-card">
+
+                <img src="
+                  {% if contact.user_image %}
+                    {{ contact.user_image.url }}
+                  {% else %}
+                    {% static '/images/boy.png' %}
+                  {% endif %}
+                " class="img-fluid" />
+
+                <div class="card-header">
+                  <a href="{% url 'about' contact.id %}" class="text-white header-link"
+                    ><i class="fas fa-mars mr-2"></i>{{ contact.username }}</a
+                  >
+                </div>
+                <div class="card-body pb-0">
+                  <p>
+                    <i class="fas fa-at mr-2"></i>
+                    <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                  </p>
+                  <p>
+                    <i class="fas fa-phone mr-2"></i>
+                    <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+                  </p>
+                  <p><i class="fas fa-info-circle mr-2"></i> {{ contact.text_message }}</p>
+                </div>
+              </div>
+
+          {% endfor %}
+
+      {% else %}
+
+              <p class="d-block font-weight-light my-2 heading">No contacts available</p>
+
+      {% endif %}
+      </div>
+      <!-- Card for details ends -->
+      <!-- Main Section ends-->
+
+{% endblock %}

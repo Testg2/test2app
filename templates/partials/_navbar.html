@@ -1,0 +1,36 @@
+<!-- Navbar -->
+<nav>
+    <a class="logo" href="{% url 'index' %}">
+      <i class="fas fa-user-circle"></i>&nbsp;Contacts
+    </a>
+    <p class="feature-link m-0 p-0">
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="mr-4 text-white">
+        <i class="fas fa-sign-in-alt"></i>&nbsp; Logout
+      </a>
+      <a href="{% url 'add' %}" class="mr-4 text-white">
+        <i class="fas fa-plus"></i>&nbsp; add contact
+      </a>
+    {% else %}
+        <a href="{% url 'login' %}" class="mr-4 text-white">
+          <i class="fas fa-signup"></i>&nbsp; Login
+        </a>
+        <a href="{% url 'signup' %}" class="mr-4 text-white">
+          <i class="fas fa-user-plus"></i>&nbsp; Signup
+        </a>
+
+    {% endif %}
+    </p>
+
+  <form class="form-inline my-2" action="{% url 'search' %}" method="GET">
+    <input class="form-control search-box"
+           type="search"
+           placeholder="Find contacts..."
+           name="items"
+           value="{{store_search_items}}"
+    >
+  </form>
+
+</nav>
+<br>
+<!-- Navbar ends -->
